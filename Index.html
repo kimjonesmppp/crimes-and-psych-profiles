@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crime & Psychological Profile Explorer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f8f9fa;
+    }
+    label, select {
+      font-size: 1.2em;
+    }
+    .profile-box {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-left: 5px solid #007bff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Serious Crimes & Psychological Profiles</h1>
+
+  <label for="crime-select">Select a crime type:</label>
+  <select id="crime-select">
+    <option value="">-- Choose a crime --</option>
+    <option value="homicide">Homicide</option>
+    <option value="arson">Arson</option>
+    <option value="serialKiller">Serial Killer</option>
+    <option value="rape">Sexual Assault</option>
+    <option value="terrorism">Terrorism</option>
+    <option value="whiteCollar">White-Collar Crime</option>
+    <option value="kidnapping">Kidnapping</option>
+    <option value="organizedCrime">Organized Crime</option>
+  </select>
+
+  <div class="profile-box" id="profile-display">
+    <p>Select a crime to view the psychological profile.</p>
+  </div>
+
+  <script>
+    const profiles = {
+      homicide: `
+        <h3>Homicide</h3>
+        <p>Offenders may show signs of aggression, poor impulse control, and antisocial traits. Often triggered by emotional or situational stressors. Some may exhibit psychopathic traits, while others act impulsively in crimes of passion.</p>
+      `,
+      arson: `
+        <h3>Arson</h3>
+        <p>Often linked with control, power, or deep psychological distress. May exhibit signs of pyromania, or have a history of trauma. Some arsonists derive satisfaction from chaos or destruction.</p>
+      `,
+      serialKiller: `
+        <h3>Serial Killer</h3>
+        <p>Typically display high levels of psychopathy, lack of empathy, manipulation, and may have a childhood history of abuse or cruelty to animals. Many lead double lives and may be socially adept.</p>
+      `,
+      rape: `
+        <h3>Sexual Assault</h3>
+        <p>Can stem from a need to dominate, exert control, or express aggression. Many offenders display narcissistic, antisocial, or paraphilic disorders. May rationalize actions to justify behavior.</p>
+      `,
+      terrorism: `
+        <h3>Terrorism</h3>
+        <p>Often ideologically driven. Profiles vary: some are highly educated and methodical, others may be socially isolated or radicalized. May perceive themselves as acting on moral or religious obligation.</p>
+      `,
+      whiteCollar: `
+        <h3>White-Collar Crime</h3>
+        <p>Frequently involves narcissism, entitlement, and a lack of remorse. Offenders are often calculated, intelligent, and socially functional. May rationalize fraud as victimless.</p>
+      `,
+      kidnapping: `
+        <h3>Kidnapping</h3>
+        <p>May involve obsession, need for control, or revenge. Some cases linked to psychotic breaks, while others are planned and strategic. Can overlap with personality or delusional disorders.</p>
+      `,
+      organizedCrime: `
+        <h3>Organized Crime</h3>
+        <p>Offenders are often goal-oriented, disciplined, and pragmatic. May exhibit antisocial traits but operate within a code. High tolerance for risk and violence; psychologically compartmentalized.</p>
+      `
+    };
+
+    document.getElementById('crime-select').addEventListener('change', function () {
+      const selected = this.value;
+      const display = document.getElementById('profile-display');
+      display.innerHTML = profiles[selected] || "<p>Please select a crime to see the profile.</p>";
+    });
+  </script>
+
+</body>
+</html>
